@@ -7,13 +7,6 @@ import os
 
 # Importing the df
 df = pd.read_csv('Restaurant_Reviews.tsv', delimiter = '\t', quoting = 3)
-#df_2 = pd.read_csv('reviews.tsv', delimiter = '\t', quoting = 3)
-
-# #Reclassify the Amazon ratings into a binary classification
-# recode_dict = { 1:0, 2:0, 3:1, 4:1, 5:1 }
-# df_2['Ratings'] = df_2['Liked'].map(recode_dict)
-# df_2.drop()
-# df = pd.merge(df_1, df_2)
 
 #Clean the data
 from NLP_functions import cleanData
@@ -38,13 +31,13 @@ X_test = sc.transform(X_test)
 #Fit the KNN model
 from NLP_functions import createKNN, createLogistic, createNaiveBayes,createRandomForest, createSVM
 
-# classifier = createKNN(X_train, y_train, 5, 'minkowski', 2)
-# classifier = createLogistic(X_train, y_train, 0)
-# classifier = createNaiveBayes(X_train, y_train)
-# classifier = createRandomForest(X_train, y_train, 250)
-classifier = createSVM(X_train, y_train, 'rbf', 0)
+#classifier = createKNN(X_train, y_train, 5, 'minkowski', 2)
+classifier = createLogistic(X_train, y_train, 0)
+#classifier = createNaiveBayes(X_train, y_train)
+#classifier = createRandomForest(X_train, y_train, 250)
+#classifier = createSVM(X_train, y_train, 'rbf', 0)
 
-#Create model and send to pickle file
+# Create model and send to pickle file
 from NLP_functions import createPickleModel
 createPickleModel(classifier, 'model')
 
@@ -55,3 +48,5 @@ y_pred = classifier.predict(X_test)
 from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
 cm = confusion_matrix(y_test, y_pred)
 report = classification_report(y_test, y_pred)
+
+

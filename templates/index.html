@@ -5,8 +5,10 @@
 </head>
 
 <body>
+    <h1>Restaurant Review Classifier</h1>
     <form action="{{ url_for('predict')}}" method="post">
-        <p>Insert your customer review to see the predicted classification.</p>
+        <p>Insert your customer review to see the predicted classification.<br>
+        Example review:  "Wow... Loved this place."</p>
         <textarea name="message" rows="4" cols="50"></textarea>
         <br />
         <button type="submit">Predict the rating!</button>
@@ -20,4 +22,5 @@
     </form>
 </body>
 </div>
+
 </html>
