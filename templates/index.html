@@ -1,0 +1,23 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <form action="{{ url_for('predict')}}" method="post">
+        <p>Insert your customer review to see the predicted classification.</p>
+        <textarea name="message" rows="4" cols="50"></textarea>
+        <br />
+        <button type="submit">Predict the rating!</button>
+        <br />
+        <br />
+        {% if prediction == 1 %}
+        <h2 style="color: green;">This is a positive review!</h2>
+        {% elif prediction == 0 %}
+        <h2 style="color:red;">This is a negative review</h2>
+        {% endif %}
+    </form>
+</body>
+</div>
+</html>
