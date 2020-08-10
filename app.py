@@ -9,6 +9,7 @@ model = pickle.load(open('model.pkl', 'rb'))
 
 @app.route('/')
 def index():
+    response.headers.add("Access-Control-Allow-Origin", "*")
     return render_template("index.html")
 
 @app.route('/predict', methods=['POST'])
