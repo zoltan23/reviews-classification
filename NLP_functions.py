@@ -55,3 +55,14 @@ def createPickleModel(classifier, model_name):
     pickle.dump(classifier, open(model_name + '.pkl', 'wb'))
     model = pickle.load(open(model_name + '.pkl', 'rb'))
     return model
+
+from sklearn.model_selection import GridSearchCV
+def gridSearch(classifier, grid_param, scoring, cv, n_jobs):
+    grid_search = GridSearchCV(estimator = classifier,
+                     param_grid = grid_param,
+                     scoring = scoring,
+                     cv = cv,
+                     n_jobs = n_jobs)
+    # grid_result = grid.fit(x_train, y_train)
+    # best_params = grid_result.best_params_                 
+    return grid_search
