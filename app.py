@@ -7,6 +7,7 @@ from NLP_functions import cleanData
 app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 
+# Index route
 @app.route('/')
 def index():
     response.headers.add("Access-Control-Allow-Origin", "*")
